@@ -11,10 +11,14 @@
         "php": "^7.1.3",
         "barryvdh/laravel-debugbar": "^3.2",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.8.*",
+        "gdevilbat/sparda-cms-core-module": "^5.7",
+        "joshbrw/laravel-module-installer": "^0.1.4",
+        "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.8",
-        "nwidart/laravel-modules": "^4.1"
+        "laravelcollective/html": "^5.7",
+        "nwidart/laravel-menus": "^3.0.0",
+        "nwidart/laravel-modules": "^4.1",
+        "unisharp/laravel-filemanager": "^1.9"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
