@@ -9,12 +9,20 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
+        <!-- <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-
+        
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite> -->
+
+        <testsuite name="Modules-Unit">
+            <directory suffix="Test.php">./Modules/**/Tests/Unit</directory>
+        </testsuite>
+
+        <testsuite name="Modules-Feature">
+            <directory suffix="Test.php">./Modules/**/Tests/Feature</directory>
         </testsuite>
     </testsuites>
     <filter>
