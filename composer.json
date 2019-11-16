@@ -16,6 +16,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "nwidart/laravel-menus": "^3.0.0",
         "nwidart/laravel-modules": "^4.1",
         "unisharp/laravel-filemanager": "^1.9"
