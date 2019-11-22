@@ -28,10 +28,12 @@ class UsersACLRepository implements ACLRepository
         }
         
         return [
-            ['disk' => env('FILESYSTEM_DRIVER'), 'path' => '/', 'access' => 1],                                  // main folder - read
-            ['disk' => env('FILESYSTEM_DRIVER'), 'path' => 'users', 'access' => 1],                              // only read
-            ['disk' => env('FILESYSTEM_DRIVER'), 'path' => 'users/'. \Auth::id(), 'access' => 1],        // only read
-            ['disk' => env('FILESYSTEM_DRIVER'), 'path' => 'users/'. \Auth::id() .'/*', 'access' => 2],  // read and write
+            ['disk' => config('filesystems.default'), 'path' => '/', 'access' => 1],                                  // main folder - read
+            ['disk' => config('filesystems.default'), 'path' => 'users', 'access' => 1],                              // only read
+            ['disk' => config('filesystems.default'), 'path' => 'users/'. \Auth::id(), 'access' => 1],        // only read
+            ['disk' => config('filesystems.default'), 'path' => 'users/'. \Auth::id() .'/*', 'access' => 2],  // read and write
+            ['disk' => config('filesystems.default'), 'path' => 'shares', 'access' => 1],                              // only read
+            ['disk' => config('filesystems.default'), 'path' => 'shares/*', 'access' => 2],
         ];
     }
 
