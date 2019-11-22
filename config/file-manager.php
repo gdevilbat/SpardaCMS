@@ -10,14 +10,14 @@ return [
      *
      * Default - DefaultConfigRepository get config from this file
      */
-    'configRepository' => DefaultConfigRepository::class,
+    'configRepository' =>  \App\Http\Handler\UsersConfigDiskRepository::class,
 
     /**
      * ACL rules repository
      *
      * Default - ConfigACLRepository (see rules in - aclRules)
      */
-    'aclRepository' => ConfigACLRepository::class,
+    'aclRepository' => \App\Http\Handler\UsersACLRepository::class,
 
     //********* Default configuration for DefaultConfigRepository **************
 
@@ -25,7 +25,7 @@ return [
      * List of disk names that you want to use
      * (from config/filesystems)
      */
-    'diskList' => ['public', 'minio'],
+    //'diskList' => ['public'],
 
     /**
      * Default disk for left manager
@@ -161,5 +161,4 @@ return [
         ],
     ],
 
-    'aclRepository' => \Gdevilbat\SpardaCMS\Modules\Core\Http\Handler\UsersACLRepository::class,
 ];
