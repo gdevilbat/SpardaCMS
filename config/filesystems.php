@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage/app/public',
+            'url' => env('APP_URL').'/public/storage',
             'visibility' => 'public',
         ],
 
@@ -72,7 +72,7 @@ return [
             'secret' => env('MINIO_SECRET'),
             'region' => env('MINIO_REGION'),
             'bucket' => env('MINIO_BUCKET'),
-            'url' => 'http://localhost/public/storage'
+            'url' => env('APP_URL').'/cloud/assets/'
         ],
 
     ],

@@ -10,14 +10,14 @@ return [
      *
      * Default - DefaultConfigRepository get config from this file
      */
-    'configRepository' =>  \App\Http\Handler\UsersConfigDiskRepository::class,
+    'configRepository' =>  \Gdevilbat\SpardaCMS\Modules\Core\Http\Handler\UsersConfigDiskRepository::class,
 
     /**
      * ACL rules repository
      *
      * Default - ConfigACLRepository (see rules in - aclRules)
      */
-    'aclRepository' => \App\Http\Handler\UsersACLRepository::class,
+    'aclRepository' => Gdevilbat\SpardaCMS\Modules\Core\Http\Handler\UsersACLRepository::class,
 
     //********* Default configuration for DefaultConfigRepository **************
 
@@ -97,7 +97,7 @@ return [
      * Add your middleware name to array -> ['web', 'auth', 'admin']
      * !!!! RESTRICT ACCESS FOR NON ADMIN USERS !!!!
      */
-    'middleware' => ['web'],
+    'middleware' => ['web', 'core.acl.lfm'],
 
     /***************************************************************************
      * ACL mechanism ON/OFF
