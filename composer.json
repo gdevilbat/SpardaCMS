@@ -16,12 +16,12 @@
         "google/apiclient": "^2.4",
         "intervention/image": "^2.5",
         "joshbrw/laravel-module-installer": "^0.1.4",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.7",
+        "laravelcollective/html": "^5.8",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "nwidart/laravel-menus": "^3.0.0",
-        "nwidart/laravel-modules": "^4.1",
+        "nwidart/laravel-menus": "^4.0.0",
+        "nwidart/laravel-modules": "^5.0",
         "unisharp/laravel-filemanager": "^1.9"
     },
     "require-dev": {
