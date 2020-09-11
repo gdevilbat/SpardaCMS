@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            \Gdevilbat\SpardaCMS\Modules\Core\Http\Middleware\JsonMiddleware::class
         ],
     ];
 
