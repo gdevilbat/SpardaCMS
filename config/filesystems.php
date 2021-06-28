@@ -72,7 +72,6 @@ return [
             'secret' => env('MINIO_SECRET'),
             'region' => env('MINIO_REGION'),
             'bucket' => env('MINIO_BUCKET'),
-            'url' => env('APP_URL').'/cloud/assets/'
         ],
 
     ],

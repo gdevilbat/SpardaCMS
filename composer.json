@@ -15,7 +15,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "nwidart/laravel-modules": "^5.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -38,13 +39,6 @@
         "gdevilbat/sparda-cms-blog-module": "*",
         "gdevilbat/sparda-cms-ecommerce-module": "*"
     },
-    "repositories": [
-        {
-            "name": "gdevilbat/sparda-cms-core-module",
-            "type": "vcs",
-            "url": "https://gitlab.com/maldinuribrahim/spardacms-core"
-        }
-    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
