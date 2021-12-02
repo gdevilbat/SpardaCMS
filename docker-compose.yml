@@ -1,0 +1,46 @@
+# Version
+version: '3.8'
+
+services:
+  # web:
+  #   container_name: web_sparda_development
+  #   build:
+  #     context: ./
+  #     dockerfile: docker/web.dockerfile
+  #   ports:
+  #     - "8081:80"
+  #   depends_on:
+  #     - fpm
+  #   networks:
+  #     - sparda_development_network
+  #   volumes:
+  #     - ./:/var/www/html
+
+  app:
+    container_name: app_sparda_development
+    build:
+      context: ./
+      dockerfile: docker/app.dockerfile
+    ports:
+        - "127.0.0.2:80:80"
+    depends_on:
+      - fpm
+    networks:
+      - sparda_development_network
+    volumes:
+      - ./:/var/www/html
+
+  fpm:
+    container_name: fpm_sparda_development
+    build:
+      context: ./
+      dockerfile: docker/fpm.dockerfile
+    networks:
+      - sparda_development_network
+    volumes:
+      - ./:/var/www/html
+      - ./docker/auth.json:/root/.config/composer/auth.json
+  
+networks:
+  sparda_development_network:
+    name: sparda_development_network
