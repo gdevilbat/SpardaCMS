@@ -9,11 +9,11 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <!-- <testsuite name="Browser Test Suite">
+        <testsuite name="Browser Test Suite">
             <directory suffix="Test.php">./tests/Browser</directory>
-        </testsuite> -->
+        </testsuite>
         <testsuite name="Modules-Browser">
-            <directory suffix="Test.php">./Modules/**/Tests/Browser</directory>
+            <directory suffix="Test.php">./Modules/Core/Tests/Browser</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -21,4 +21,14 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    <php>
+        <env name="APP_ENV" value="testing" force="true"/>
+        <env name="BCRYPT_ROUNDS" value="4" force="true"/>
+        <env name="CACHE_DRIVER" value="array" force="true"/>
+        <env name="MAIL_DRIVER" value="array" force="true"/>
+        <env name="QUEUE_CONNECTION" value="sync" force="true"/>
+        <env name="SESSION_DRIVER" value="array" force="true"/>
+        <env name="FILESYSTEM_DRIVER" value="public" force="true"/>
+        <env name="DB_CONNECTION" value="sqlite" force="true"/>
+    </php>
 </phpunit>
