@@ -46,6 +46,7 @@ services:
   selenium:
     container_name: selenium_sparda_development
     image: selenium/standalone-chrome:latest
+    restart: unless-stopped
     depends_on:
       - app
     links:
