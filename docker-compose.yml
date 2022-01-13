@@ -21,6 +21,7 @@ services:
     build:
       context: ./
       dockerfile: docker/app.dockerfile
+    restart: unless-stopped
     ports:
         - "127.0.0.2:80:80"
     depends_on:
@@ -35,11 +36,24 @@ services:
     build:
       context: ./
       dockerfile: docker/fpm.dockerfile
+    restart: unless-stopped
     networks:
       - sparda_development_network
     volumes:
       - ./:/var/www/html
       - ./docker/auth.json:/root/.config/composer/auth.json
+
+  selenium:
+    container_name: selenium_sparda_development
+    image: selenium/standalone-chrome:latest
+    depends_on:
+      - app
+    links:
+      - app:sdnet.test
+    networks:
+      - sparda_development_network
+    volumes:
+      - /dev/shm:/dev/shm
   
 networks:
   sparda_development_network:
