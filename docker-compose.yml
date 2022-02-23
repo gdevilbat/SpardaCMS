@@ -23,7 +23,7 @@ services:
       dockerfile: docker/app.dockerfile
     restart: unless-stopped
     ports:
-        - "127.0.0.2:80:80"
+        - "127.0.0.2:8080:80"
     depends_on:
       - fpm
     networks:
@@ -45,7 +45,9 @@ services:
 
   selenium:
     container_name: selenium_sparda_development
-    image: selenium/standalone-chrome:latest
+    build:
+      context: ./
+      dockerfile: docker/selenium.dockerfile
     restart: unless-stopped
     depends_on:
       - app
@@ -55,6 +57,9 @@ services:
       - sparda_development_network
     volumes:
       - /dev/shm:/dev/shm
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+    - DISPLAY=${DISPLAY}
   
 networks:
   sparda_development_network:
