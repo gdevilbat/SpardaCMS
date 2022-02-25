@@ -43,6 +43,20 @@ services:
       - ./:/var/www/html
       - ./docker/auth.json:/root/.config/composer/auth.json
 
+  db:
+    image: mysql:8.0
+    container_name: database_sparda_development
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    env_file:
+      - .env.database
+    ports:
+      - "127.0.0.2:6033:3306"
+    volumes:
+      - ./data/db:/var/lib/mysql
+    networks:
+      - sparda_development_network
+
   selenium:
     container_name: selenium_sparda_development
     build:
