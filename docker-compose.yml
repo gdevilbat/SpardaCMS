@@ -6,13 +6,13 @@ services:
   #   container_name: web_sparda_development
   #   build:
   #     context: ./
-  #     dockerfile: docker/web.dockerfile
+  #     dockerfile: docker/config/web.dockerfile
   #   ports:
   #     - "8081:80"
   #   depends_on:
   #     - fpm
   #   networks:
-  #     - sparda_development_network
+  #     - sparda_cms_network
   #   volumes:
   #     - ./:/var/www/html
 
@@ -20,14 +20,14 @@ services:
     container_name: app_sparda_development
     build:
       context: ./
-      dockerfile: docker/app.dockerfile
+      dockerfile: docker/config/app.dockerfile
     restart: unless-stopped
     ports:
         - "127.0.0.2:8080:80"
     depends_on:
       - fpm
     networks:
-      - sparda_development_network
+      - sparda_cms_network
     volumes:
       - ./:/var/www/html
 
@@ -35,13 +35,13 @@ services:
     container_name: fpm_sparda_development
     build:
       context: ./
-      dockerfile: docker/fpm.dockerfile
+      dockerfile: docker/config/fpm.dockerfile
     restart: unless-stopped
     networks:
-      - sparda_development_network
+      - sparda_cms_network
     volumes:
       - ./:/var/www/html
-      - ./docker/auth.json:/root/.config/composer/auth.json
+      - ./docker/config/auth.json:/root/.config/composer/auth.json
 
   db:
     image: mysql:8.0
@@ -53,22 +53,22 @@ services:
     ports:
       - "127.0.0.2:6033:3306"
     volumes:
-      - ./data/db:/var/lib/mysql
+      - ./docker/data/db:/var/lib/mysql
     networks:
-      - sparda_development_network
+      - sparda_cms_network
 
   selenium:
     container_name: selenium_sparda_development
     build:
       context: ./
-      dockerfile: docker/selenium.dockerfile
+      dockerfile: docker/config/selenium.dockerfile
     restart: unless-stopped
     depends_on:
       - app
     links:
       - app:sdnet.test
     networks:
-      - sparda_development_network
+      - sparda_cms_network
     volumes:
       - /dev/shm:/dev/shm
       - /tmp/.X11-unix:/tmp/.X11-unix
@@ -76,5 +76,5 @@ services:
     - DISPLAY=${DISPLAY}
   
 networks:
-  sparda_development_network:
-    name: sparda_development_network
+  sparda_cms_network:
+    name: sparda_cms_network

@@ -3,8 +3,8 @@ FROM php:7.3-apache
 RUN apt update && apt  install -y libapache2-mod-fcgid \
     && a2enmod rewrite headers actions fcgid alias proxy_fcgi negotiation
 
-ADD ./docker/apache2.conf /etc/apache2/apache2.conf
-ADD ./docker/000-default.conf /etc/apache2/sites-available/000-default.conf
+ADD ./docker/config/apache2.conf /etc/apache2/apache2.conf
+ADD ./docker/config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN service apache2 restart
 
