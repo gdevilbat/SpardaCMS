@@ -2,34 +2,34 @@
 version: '3.8'
 
 services:
-  # web:
-  #   container_name: web_sparda_development
-  #   build:
-  #     context: ./
-  #     dockerfile: docker/config/web.dockerfile
-  #   ports:
-  #     - "8081:80"
-  #   depends_on:
-  #     - fpm
-  #   networks:
-  #     - sparda_cms_network
-  #   volumes:
-  #     - ./:/var/www/html
-
-  app:
-    container_name: app_sparda_development
+  web:
+    container_name: web_sparda_development
     build:
       context: ./
-      dockerfile: docker/config/app.dockerfile
-    restart: unless-stopped
+      dockerfile: docker/config/web.dockerfile
     ports:
-        - "127.0.0.2:8080:80"
+      - "127.0.0.2:8080:80"
     depends_on:
       - fpm
     networks:
       - sparda_cms_network
     volumes:
       - ./:/var/www/html
+
+  # app:
+  #   container_name: app_sparda_development
+  #   build:
+  #     context: ./
+  #     dockerfile: docker/config/app.dockerfile
+  #   restart: unless-stopped
+  #   ports:
+  #       - "127.0.0.2:8080:80"
+  #   depends_on:
+  #     - fpm
+  #   networks:
+  #     - sparda_cms_network
+  #   volumes:
+  #     - ./:/var/www/html
 
   fpm:
     container_name: fpm_sparda_development
@@ -57,6 +57,37 @@ services:
     networks:
       - sparda_cms_network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_sparda_development
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: unless-stopped
+    ports:
+      - "127.0.0.2:8081:80"
+    networks:
+      - sparda_cms_network
+
+  node:
+    container_name: node_sparda_development
+    build:
+      context: ./
+      dockerfile: docker/config/node.dockerfile
+    command: >
+      bash -c "rm -fv node_modules
+      && ln -s /home/node_modules /var/www/html/node_modules
+      && sleep infinity"
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - sparda_cms_network
+
   selenium:
     container_name: selenium_sparda_development
     build:
@@ -64,9 +95,9 @@ services:
       dockerfile: docker/config/selenium.dockerfile
     restart: unless-stopped
     depends_on:
-      - app
+      - web
     links:
-      - app:sdnet.test
+      - web:sdnet.test
     networks:
       - sparda_cms_network
     volumes:
