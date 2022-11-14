@@ -1,4 +1,14 @@
 require('./bootstrap');
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+import VueRouter from 'vue-router'
+import Vuelidate from 'vuelidate'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+Vue.use(Vuetify)
+Vue.use(VueRouter)
+Vue.use(BootstrapVue)
+Vue.use(Vuelidate)
 
 /**
 * The following block of code may be used to automatically register your
@@ -19,6 +29,20 @@ require('./bootstrap');
 * or customize the JavaScript scaffolding to fit your unique needs.
 */
 
-// const app = new Vue({
-//     el: '#app',
-// });
+const LoginPage = () => import('^/Core/Resources/assets/components/Login.vue')
+
+const router = new VueRouter({
+    mode : 'history',
+    routes : [
+        {
+            path : '/control/auth/',
+            name : 'login',
+            component : LoginPage,
+        },
+    ]
+})
+new Vue({
+    vuetify : new Vuetify(),
+    el : '#main',
+    router
+})
