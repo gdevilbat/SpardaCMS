@@ -30,6 +30,9 @@ Vue.use(Vuelidate)
 */
 
 const LoginPage = () => import('^/Core/Resources/assets/components/Login.vue')
+const Template = () => import('^/Core/Resources/assets/components/Template.vue')
+const Dashboard = () => import('^/Core/Resources/assets/components/Dashboard.vue')
+const Setting = () => import('^/Core/Resources/assets/components/Setting.vue')
 
 const router = new VueRouter({
     mode : 'history',
@@ -38,6 +41,44 @@ const router = new VueRouter({
             path : '/control/auth/',
             name : 'login',
             component : LoginPage,
+            meta: { 
+                APP_NAME: process.env.MIX_APP_NAME,
+                APP_URL: process.env.MIX_APP_URL,
+            }
+        },
+        {
+            path : '/control/spa',
+            component : Template,
+            children: [
+                {
+                    // UserProfile will be rendered inside User's <router-view>
+                    // when /user/:id/profile is matched
+                    path: 'dashboard',
+                    name: 'dashboard',
+                    components : {
+                        content : Dashboard,
+                    },
+                    meta: { 
+                        APP_NAME: process.env.MIX_APP_NAME,
+                        APP_URL: process.env.MIX_APP_URL,
+                        title_dashboard: 'Dashboard'
+                    }
+                },
+                {
+                    // UserProfile will be rendered inside User's <router-view>
+                    // when /user/:id/profile is matched
+                    path: 'setting',
+                    name: 'setting',
+                    components : {
+                        content : Setting,
+                    },
+                    meta: { 
+                        APP_NAME: process.env.MIX_APP_NAME,
+                        APP_URL: process.env.MIX_APP_URL,
+                        title_dashboard: 'Setting'
+                    }
+                },
+            ],
         },
     ]
 })
