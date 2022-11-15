@@ -7,6 +7,7 @@ services:
     build:
       context: ./
       dockerfile: docker/config/web.dockerfile
+    restart: unless-stopped
     ports:
       - "127.0.0.2:8080:80"
     depends_on:
