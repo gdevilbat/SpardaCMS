@@ -94,7 +94,6 @@ services:
     build:
       context: ./
       dockerfile: docker/config/selenium.dockerfile
-    restart: unless-stopped
     depends_on:
       - web
     links:
