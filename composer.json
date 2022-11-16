@@ -28,16 +28,16 @@
         "phpunit/phpunit": "^9.5.10"
     },
     "replace": {
-        "gdevilbat/sparda-cms-core-module": "*",
-        "gdevilbat/sparda-cms-account-module": "*",
-        "gdevilbat/sparda-cms-role-module": "*",
-        "gdevilbat/sparda-cms-user-module": "*",
-        "gdevilbat/sparda-cms-taxonomy-module": "*",
-        "gdevilbat/sparda-cms-post-module": "*",
-        "gdevilbat/sparda-cms-page-module": "*",
-        "gdevilbat/sparda-cms-appearance-module": "*",
-        "gdevilbat/sparda-cms-blog-module": "*",
-        "gdevilbat/sparda-cms-ecommerce-module": "*"
+        "gdevilbat/core-module": "*",
+        "gdevilbat/account-module": "*",
+        "gdevilbat/role-module": "*",
+        "gdevilbat/user-module": "*",
+        "gdevilbat/taxonomy-module": "*",
+        "gdevilbat/post-module": "*",
+        "gdevilbat/page-module": "*",
+        "gdevilbat/appearance-module": "*",
+        "gdevilbat/blog-module": "*",
+        "gdevilbat/ecommerce-module": "*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -45,7 +45,7 @@
         "sort-packages": true
     },
     "extra": {
-        "module-dir": "vendor/gdevilbat",
+        "module-dir": "Modules",
         "merge-plugin": {
             "include": [
                 "Modules/*/composer.json"
